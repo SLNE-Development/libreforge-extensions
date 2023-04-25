@@ -1,0 +1,4 @@
+main: dev.slne.surf.ecoaddon.AddonExtension
+name: SurfEffectsAddon
+author: twisti
+version: ${version}
