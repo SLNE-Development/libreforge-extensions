@@ -1,0 +1,9 @@
+########################################################################################################################
+#                                                       MAGNET                                                         #
+#                       Sucks all items in a certain radius into the inventory of the player                           #
+########################################################################################################################
+
+- id: magnet
+  args:
+    radius: 10 # The radius for items to get sucked into the player´s inventory
+#   ...other config (eg triggers, filters, mutators, etc)

@@ -1,0 +1,39 @@
+display-name: "Magnet" # The name of the enchantment in-game
+description: "Sammel alle Items in einem Radius von &a%radius%&r Blöcken auf" # The description of the enchantment
+placeholders: # Extra placeholders to show in the enchantment description (optional)
+  radius: "%level% * 3" # Here, %radius% would be the extra placeholder to use
+type: special # The enchantment type, from types.yml
+
+targets: # The items that the enchantment can be applied to, see targets.yml
+  - sword
+  - axe
+  - pickaxe
+  - shovel
+  - hoe
+  - compass
+  - helmet
+  - chestplate
+  - leggings
+  - boots
+conflicts: # The enchantments that conflict with this
+  - looting
+rarity: special # The rarity of the enchantment, see rarity.yml
+max-level: 5 # The max level of the enchantment
+
+tradeable: false # If the enchantment can be obtained from villagers
+discoverable: true # If the enchantment can generate naturally in chests
+enchantable: false # If the enchantment can be obtained from enchanting tables
+
+# The effects of the enchantment (i.e. the functionality)
+# See here: https://plugins.auxilor.io/effects/configuring-an-effect
+# Use %level% as a placeholder for the enchantment level
+effects:
+  - id: magnet
+    args:
+      radius: '%level% * 3'
+    triggers:
+      - repeating # every second
+
+# The conditions required to use the enchantment,
+# you can use %level% as a placeholder here too
+conditions: [ ]

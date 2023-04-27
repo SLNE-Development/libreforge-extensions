@@ -1,0 +1,3 @@
+- id: some_effect
+  triggers:
+    - repeating # executes a task every second

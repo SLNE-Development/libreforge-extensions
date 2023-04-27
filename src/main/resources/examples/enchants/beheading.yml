@@ -1,0 +1,33 @@
+display-name: "Beheading" # The name of the enchantment in-game
+description: "Drops the victim´s head with a &a%chance%%&r chance" # The description of the enchantment
+placeholders: # Extra placeholders to show in the enchantment description (optional)
+  chance: "%level% * 5" # Here, %damage% would be the extra placeholder to use
+type: normal # The enchantment type, from types.yml
+
+targets: # The items that the enchantment can be applied to, see targets.yml
+  - sword
+  - axe
+  - bow
+  - trident
+conflicts: # The enchantments that conflict with this
+  - looting
+rarity: special # The rarity of the enchantment, see rarity.yml
+max-level: 5 # The max level of the enchantment
+
+tradeable: true # If the enchantment can be obtained from villagers
+discoverable: true # If the enchantment can generate naturally in chests
+enchantable: false # If the enchantment can be obtained from enchanting tables
+
+# The effects of the enchantment (i.e. the functionality)
+# See here: https://plugins.auxilor.io/effects/configuring-an-effect
+# Use %level% as a placeholder for the enchantment level
+effects:
+  - id: drop_mob_head
+    args:
+      chance: '%level% * 5'
+    triggers:
+      - kill
+
+# The conditions required to use the enchantment,
+# you can use %level% as a placeholder here too
+conditions: [ ]
