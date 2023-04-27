@@ -1,4 +1,4 @@
-main: dev.slne.surf.ecoaddon.AddonExtension
-name: SurfEffectsAddon
+main: dev.slne.surf.libreaddon.SurfLibreforgeExtensions
+name: SurfLibreforgeExtensions
 author: twisti
 version: ${version}
