@@ -1,0 +1,20 @@
+display-name: "Silent Gaze"
+description: "Du kannst einen Enderman angucken, ohne das dir etwas passiert"
+
+type: special
+rarity: uncommon
+max-level: 1
+
+tradeable: false
+discoverable: true
+enchantable: true
+
+targets:
+  - helmet
+
+conflicts: [ ]
+
+effects:
+  - id: silent_gaze
+    triggers:
+      - enderman_target

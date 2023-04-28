@@ -1,5 +1,6 @@
 package dev.slne.surf.libreaddon.util
 
+import net.kyori.adventure.sound.Sound
 import net.minecraft.network.protocol.Packet
 import net.minecraft.network.protocol.game.ClientboundTakeItemEntityPacket
 import org.bukkit.Material
@@ -49,4 +50,13 @@ fun Player.sendItemPickupPacket(item: Item){
             item.itemStack.amount
         )
     )
+
+    this.playSound(Sound.sound { builder ->
+        run {
+            builder.type(org.bukkit.Sound.ENTITY_ITEM_PICKUP.key())
+            builder.source(Sound.Source.PLAYER)
+            builder.volume(0.5f)
+            builder.pitch(0.8f)
+        }
+    })
 }

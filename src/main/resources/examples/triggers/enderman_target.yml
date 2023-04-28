@@ -1,0 +1,3 @@
+- id: some_effect
+  triggers:
+    - enderman_target # executes if an enderman targets a player
