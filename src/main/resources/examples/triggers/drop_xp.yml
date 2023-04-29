@@ -1,0 +1,3 @@
+- id: some-effect
+  triggers:
+    - drop_xp # triggered when a mob or block drops xp

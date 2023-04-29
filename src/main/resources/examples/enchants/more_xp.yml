@@ -1,0 +1,31 @@
+display-name: "Experience"
+description: "Droppt dir &a%percent%%&r mehr Erfahrung"
+placeholders:
+  percent: '%level% * 10'
+
+type: special
+rarity: rare
+max-level: 3
+
+tradeable: false
+discoverable: true
+enchantable: true
+
+targets:
+  - sword
+  - axe
+  - pickaxe
+  - trident
+  - bow
+  - shovel
+  - hoe
+
+conflicts: [ ]
+
+effects:
+  - id: more_xp
+    args:
+      level: '%level%'
+
+    triggers:
+      - drop_xp

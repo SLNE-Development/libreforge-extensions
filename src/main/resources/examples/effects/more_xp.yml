@@ -1,0 +1,4 @@
+- id: more_xp
+  args:
+    level: '%level%' # The level of the enchantment
+#   ...other config (eg triggers, filters, mutators, etc)

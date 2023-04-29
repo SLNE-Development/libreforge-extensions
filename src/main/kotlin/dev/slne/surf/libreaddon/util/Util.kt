@@ -20,6 +20,7 @@ fun LivingEntity.getHead(): ItemStack {
         head = ItemStack(Material.PLAYER_HEAD)
         head.editMeta { meta -> if (meta is SkullMeta) meta.playerProfile = this.playerProfile}
     }else {
+        @Suppress("UnstableApiUsage")
         head = when(this.type) {
             EntityType.ZOMBIE -> ItemStack(Material.ZOMBIE_HEAD)
             EntityType.CREEPER -> ItemStack(Material.CREEPER_HEAD)
