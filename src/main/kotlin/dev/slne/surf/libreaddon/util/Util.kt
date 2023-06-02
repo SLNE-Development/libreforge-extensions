@@ -1,12 +1,7 @@
 package dev.slne.surf.libreaddon.util
 
-import net.kyori.adventure.sound.Sound
-import net.minecraft.network.protocol.Packet
-import net.minecraft.network.protocol.game.ClientboundTakeItemEntityPacket
 import org.bukkit.Material
-import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer
 import org.bukkit.entity.EntityType
-import org.bukkit.entity.Item
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -32,32 +27,4 @@ fun LivingEntity.getHead(): ItemStack {
         }
     }
     return head
-}
-
-fun Player.sendPackets(vararg packets: Packet<*>){
-    this as CraftPlayer
-    val serverPlayer = this.handle
-
-    for (packet in packets){
-        serverPlayer.connection.send(packet)
-    }
-}
-
-fun Player.sendItemPickupPacket(item: Item){
-    this.sendPackets(
-        ClientboundTakeItemEntityPacket( // https://wiki.vg/Protocol#Pickup_Item
-            item.entityId,
-            this.entityId,
-            item.itemStack.amount
-        )
-    )
-
-    this.playSound(Sound.sound { builder ->
-        run {
-            builder.type(org.bukkit.Sound.ENTITY_ITEM_PICKUP.key())
-            builder.source(Sound.Source.PLAYER)
-            builder.volume(0.5f)
-            builder.pitch(0.8f)
-        }
-    })
 }

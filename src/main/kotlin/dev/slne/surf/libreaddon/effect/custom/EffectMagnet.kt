@@ -6,7 +6,7 @@ import com.willfp.libreforge.arguments
 import com.willfp.libreforge.effects.Effect
 import com.willfp.libreforge.triggers.TriggerData
 import com.willfp.libreforge.triggers.TriggerParameter
-import dev.slne.surf.libreaddon.util.sendItemPickupPacket
+import net.kyori.adventure.sound.Sound
 import org.bukkit.entity.Item
 import org.bukkit.util.BoundingBox
 
@@ -33,11 +33,20 @@ object EffectMagnet : Effect<NoCompileData>("magnet") {
             location.z - radius
             )
         ).filterIsInstance<Item>()
+            .filter { item -> player.hasLineOfSight(item) }
 
         items.forEach { item ->
             run {
                 if (player.inventory.addItem(item.itemStack).isEmpty()){
-                    player.sendItemPickupPacket(item)
+                    player.playPickupItemAnimation(item)
+                    player.playSound(Sound.sound { builder ->
+                        run {
+                            builder.type(org.bukkit.Sound.ENTITY_ITEM_PICKUP.key())
+                            builder.source(Sound.Source.PLAYER)
+                            builder.volume(0.5f)
+                            builder.pitch(0.8f)
+                        }
+                    })
                     item.health = -1
                 }
             }

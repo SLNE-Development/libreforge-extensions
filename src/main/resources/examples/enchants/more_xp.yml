@@ -4,7 +4,7 @@ placeholders:
   percent: '%level% * 10'
 
 type: special
-rarity: rare
+rarity: epic
 max-level: 3
 
 tradeable: false
