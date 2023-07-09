@@ -8,7 +8,6 @@ import com.willfp.libreforge.triggers.TriggerData
 import com.willfp.libreforge.triggers.TriggerParameter
 import net.kyori.adventure.sound.Sound
 import org.bukkit.entity.Item
-import org.bukkit.util.BoundingBox
 
 object EffectMagnet : Effect<NoCompileData>("magnet") {
     override val parameters = setOf(
@@ -23,17 +22,11 @@ object EffectMagnet : Effect<NoCompileData>("magnet") {
         val player = data.player?: return false
         val location = player.location
         val radius = config.getDoubleFromExpression("radius", player)
-        val items :Collection<Item> = player.world.getNearbyEntities(
-            BoundingBox(
-            location.x + radius,
-            location.y + radius,
-            location.z + radius,
-            location.x - radius,
-            location.y - radius,
-            location.z - radius
-            )
-        ).filterIsInstance<Item>()
-            .filter { item -> player.hasLineOfSight(item) }
+        val items :Collection<Item> = player.world.getNearbyEntitiesByType(
+            Item::class.java,
+            location,
+            radius
+        ) { item -> player.hasLineOfSight(item) }
 
         items.forEach { item ->
             run {
