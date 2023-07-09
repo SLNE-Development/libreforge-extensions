@@ -38,6 +38,7 @@ object EffectMagnet : Effect<NoCompileData>("magnet") {
         items.forEach { item ->
             run {
                 if (player.inventory.addItem(item.itemStack).isEmpty()){
+                    item.health = -1
                     player.playPickupItemAnimation(item)
                     player.playSound(Sound.sound { builder ->
                         run {
@@ -47,7 +48,6 @@ object EffectMagnet : Effect<NoCompileData>("magnet") {
                             builder.pitch(0.8f)
                         }
                     })
-                    item.health = -1
                 }
             }
         }
