@@ -23,7 +23,7 @@ object TriggerBeheading : Trigger("beheading") {
     @EventHandler
     fun onMobKill(event: EntityDeathEvent) {
         val killedEntity = event.entity
-        val killer = killedEntity.killer.let { it is Player; it as Player }
+        val killer = killedEntity.killer ?: return
         val head = killedEntity.getHead()
 
         if (head.type == Material.AIR) return
