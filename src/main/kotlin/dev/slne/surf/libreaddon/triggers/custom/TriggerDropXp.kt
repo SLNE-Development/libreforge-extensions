@@ -1,5 +1,6 @@
 package dev.slne.surf.libreaddon.triggers.custom
 
+import com.willfp.libreforge.toDispatcher
 import com.willfp.libreforge.triggers.Trigger
 import com.willfp.libreforge.triggers.TriggerData
 import com.willfp.libreforge.triggers.TriggerParameter
@@ -19,24 +20,28 @@ object TriggerDropXp : Trigger("drop_xp") {
     fun onMobKill(event: EntityDeathEvent){
         val killer = event.entity.killer?: return
 
-        this.dispatch(killer, TriggerData(
-            event = event,
-            victim = event.entity,
-            location = event.entity.location,
-            player = killer,
-            value = event.droppedExp.toDouble(),
-        ))
+        dispatch(
+            killer.toDispatcher(), TriggerData(
+                event = event,
+                victim = event.entity,
+                location = event.entity.location,
+                player = killer,
+                value = event.droppedExp.toDouble(),
+            )
+        )
     }
 
     @EventHandler
     fun onBlockBreak(event: BlockBreakEvent){
-        this.dispatch(event.player, TriggerData(
-            event = event,
-            player = event.player,
-            block = event.block,
-            location = event.block.location,
-            value = event.expToDrop.toDouble()
-        ))
+        dispatch(
+            event.player.toDispatcher(), TriggerData(
+                event = event,
+                player = event.player,
+                block = event.block,
+                location = event.block.location,
+                value = event.expToDrop.toDouble()
+            )
+        )
     }
 
 }

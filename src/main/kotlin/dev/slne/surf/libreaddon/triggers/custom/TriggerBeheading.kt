@@ -1,5 +1,6 @@
 package dev.slne.surf.libreaddon.triggers.custom
 
+import com.willfp.libreforge.toDispatcher
 import com.willfp.libreforge.triggers.Trigger
 import com.willfp.libreforge.triggers.TriggerData
 import com.willfp.libreforge.triggers.TriggerParameter
@@ -27,9 +28,8 @@ object TriggerBeheading : Trigger("beheading") {
 
         if (head.type == Material.AIR) return
 
-        this.dispatch(
-            killer,
-            TriggerData(
+        dispatch(
+            killer.toDispatcher(), TriggerData(
                 event = event,
                 victim = killedEntity,
                 location = killedEntity.location,

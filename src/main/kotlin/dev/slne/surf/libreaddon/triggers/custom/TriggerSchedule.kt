@@ -1,5 +1,6 @@
 package dev.slne.surf.libreaddon.triggers.custom
 
+import com.willfp.libreforge.toDispatcher
 import com.willfp.libreforge.triggers.Trigger
 import com.willfp.libreforge.triggers.TriggerData
 import com.willfp.libreforge.triggers.TriggerParameter
@@ -20,7 +21,7 @@ object TriggerSchedule : Trigger("repeating") { // every second
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val player = event.player
         val bukkitTask = Bukkit.getScheduler().runTaskTimer(SurfLibreforgeExtensions.getExtension().plugin, { ->
-            this.dispatch(player, TriggerData(player = player, location = player.location))
+            dispatch(player.toDispatcher(), TriggerData(player = player, location = player.location))
         }, 5L, 20L)
 
         tasks.putIfAbsent(player.uniqueId, bukkitTask.taskId)

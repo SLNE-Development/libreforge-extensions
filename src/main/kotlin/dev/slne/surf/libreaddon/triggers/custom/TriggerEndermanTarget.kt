@@ -1,5 +1,6 @@
 package dev.slne.surf.libreaddon.triggers.custom
 
+import com.willfp.libreforge.toDispatcher
 import com.willfp.libreforge.triggers.Trigger
 import com.willfp.libreforge.triggers.TriggerData
 import com.willfp.libreforge.triggers.TriggerParameter
@@ -19,6 +20,9 @@ object TriggerEndermanTarget : Trigger("enderman_target") {
         if (event.entity !is Enderman) return
         if (event.target !is Player) return
 
-        this.dispatch(event.target as Player, TriggerData(player = event.target as Player, event = event))
+        dispatch(
+            (event.target as Player).toDispatcher(),
+            TriggerData(player = event.target as Player, event = event),
+        )
     }
 }

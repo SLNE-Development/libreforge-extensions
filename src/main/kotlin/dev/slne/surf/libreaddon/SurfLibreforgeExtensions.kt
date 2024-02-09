@@ -3,7 +3,6 @@ package dev.slne.surf.libreaddon
 import com.willfp.eco.core.EcoPlugin
 import com.willfp.eco.core.extensions.Extension
 import dev.slne.surf.libreaddon.effect.Effects
-import dev.slne.surf.libreaddon.enchant.Enchants
 import dev.slne.surf.libreaddon.triggers.Triggers
 
 class SurfLibreforgeExtensions(
@@ -17,7 +16,6 @@ class SurfLibreforgeExtensions(
 
         Triggers
         Effects
-        Enchants
     }
 
     override fun onDisable() {
