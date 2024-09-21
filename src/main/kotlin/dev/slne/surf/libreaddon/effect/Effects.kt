@@ -10,5 +10,6 @@ object Effects {
         register(EffectSilentGaze)
         register(EffectMoreExperience)
         register(EffectSheepnesis)
+        register(EffectSilentNight)
     }
 }

@@ -6,11 +6,12 @@ import com.willfp.libreforge.effects.Effect
 import com.willfp.libreforge.triggers.TriggerData
 import com.willfp.libreforge.triggers.TriggerParameter
 import org.bukkit.entity.Enderman
+import org.bukkit.entity.Phantom
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityTargetEvent
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent
 
-object EffectSilentGaze : Effect<NoCompileData>("silent_gaze") {
+object EffectSilentNight : Effect<NoCompileData>("silent_night") {
     override val parameters = setOf(
         TriggerParameter.PLAYER,
         TriggerParameter.EVENT
@@ -24,7 +25,7 @@ object EffectSilentGaze : Effect<NoCompileData>("silent_gaze") {
 
         val target = event.target
 
-        if (event.entity !is Enderman) return false
+        if (event.entity !is Phantom) return false
         if (target !is Player) return false
         if (target.uniqueId != player.uniqueId) return false
 

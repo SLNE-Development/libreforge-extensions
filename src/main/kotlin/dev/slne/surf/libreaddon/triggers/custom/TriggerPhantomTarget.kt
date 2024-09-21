@@ -5,22 +5,21 @@ import com.willfp.libreforge.triggers.Trigger
 import com.willfp.libreforge.triggers.TriggerData
 import com.willfp.libreforge.triggers.TriggerParameter
 import org.bukkit.entity.Enderman
+import org.bukkit.entity.Phantom
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
-import org.bukkit.event.entity.EntityTargetEvent
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent
 
-object TriggerEndermanTarget : Trigger("enderman_target") {
+object TriggerPhantomTarget : Trigger("phantom_target") {
     override val parameters = setOf(
         TriggerParameter.PLAYER,
         TriggerParameter.EVENT
     )
 
     @EventHandler
-    fun onEndermanTarget(event: EntityTargetLivingEntityEvent){
-        if (event.entity !is Enderman) return
+    fun onPhantomTarget(event: EntityTargetLivingEntityEvent){
+        if (event.entity !is Phantom) return
         if (event.target !is Player) return
-        if (event.reason != EntityTargetEvent.TargetReason.CLOSEST_PLAYER) return
 
         dispatch(
             (event.target as Player).toDispatcher(),
