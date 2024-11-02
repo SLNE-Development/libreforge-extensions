@@ -11,5 +11,6 @@ object Effects {
         register(EffectMoreExperience)
         register(EffectSheepnesis)
         register(EffectSilentNight)
+        register(EffectOxygenBonus)
     }
 }
