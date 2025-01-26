@@ -10,7 +10,7 @@ import org.bukkit.entity.Player
 
 object EffectOxygenBonus : AttributeEffect(
     "generic_oxygen_multiplier",
-    Attribute.GENERIC_OXYGEN_BONUS,
+    Attribute.OXYGEN_BONUS,
     AttributeModifier.Operation.MULTIPLY_SCALAR_1
 ) {
     override val arguments = arguments {
